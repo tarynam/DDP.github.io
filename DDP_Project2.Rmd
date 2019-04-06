@@ -1,0 +1,32 @@
+---
+title: "Untitled"
+author: "Taryn McLaughlin"
+date: "4/5/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(leaflet)
+vacay.city<-c("Budapest", "Bratislava", "Prague", "Vienna", "Amsterdam", "Zurich", "Paris")
+vacay<-data.frame(lat=c(47.4979, 48.1486, 48.2082, 50.0755, 52.3680, 47.3769, 48.8566),
+                  lng=c(19.0402, 17.1077, 16.3738, 14.4378, 4.9036, 8.5417, 2.3522),
+                  city=c("Budapest", "Bratislava", "Prague", "Vienna", "Amsterdam", "Zurich", "Paris"),
+                  reason=c("Taryn", "Fun", "Danny", "Danny", "Kelsey", "Delta", "Delta"))
+vacay %>% 
+    leaflet()%>%
+    addTiles()%>%
+    addCircleMarkers(color=vacay$reason)%>%
+    addLegend(labels=levels(vacay$reason), colors=c("#E7B800", "#FC4E07", "#C70039", "#581845", "#00AFBB"))
+
+
+
+
+
+#%>%
+ #   addMarkers(clusterOptions = markerClusterOptions())
+```
+
